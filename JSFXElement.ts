@@ -1,11 +1,11 @@
 import JSFXProperty from "./JSFXProperty.js";
 import JSFXNode from "./JSFXNode.js";
-import ArrayProperty from "@mephiztopheles/properties/properties/ArrayProperty.js";
-import StringProperty from "@mephiztopheles/properties/properties/StringProperty.js";
-import BooleanProperty from "@mephiztopheles/properties/properties/BooleanProperty.js";
-import ReadOnlyNumberProperty from "@mephiztopheles/properties/properties/ReadOnlyNumberProperty.js";
-import NumberProperty from "@mephiztopheles/properties/properties/NumberProperty.js";
-import ObjectProperty from "@mephiztopheles/properties/properties/ObjectProperty.js";
+import ArrayProperty from ".//properties/properties/ArrayProperty.js";
+import StringProperty from ".//properties/properties/StringProperty.js";
+import BooleanProperty from ".//properties/properties/BooleanProperty.js";
+import ReadOnlyNumberProperty from ".//properties/properties/ReadOnlyNumberProperty.js";
+import NumberProperty from ".//properties/properties/NumberProperty.js";
+import ObjectProperty from ".//properties/properties/ObjectProperty.js";
 import Style from "./helper/Style.js";
 import Data from "./helper/Data.js";
 

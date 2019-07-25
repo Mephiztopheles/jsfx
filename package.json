@@ -1,6 +1,6 @@
 {
     "name": "@mephiztopheles/jsfx",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "Observable-based DOM-manipulation-framework",
     "main": "index.d.ts",
     "directories": {
@@ -9,10 +9,6 @@
     "peerDependencies": {
         "@mephiztopheles/fancypromise": "*",
         "@mephiztopheles/properties": "*"
-    },
-    "dependencies": {
-        "@mephiztopheles/fancypromise": "*",
-        "@mephiztopheles/properties": "^1.7.0"
     },
     "devDependencies": {
         "@mephiztopheles/test": "*"

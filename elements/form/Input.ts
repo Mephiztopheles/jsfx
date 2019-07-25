@@ -1,4 +1,4 @@
-import StringProperty from "@mephiztopheles/properties/properties/StringProperty.js";
+import StringProperty from "../../properties/properties/StringProperty.js";
 import FormElement    from "./FormElement.js";
 import JSFXProperty    from "../../JSFXProperty.js";
 

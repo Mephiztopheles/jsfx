@@ -1,6 +1,6 @@
-import Property from "@mephiztopheles/properties/Property.js";
-import ArrayProperty from "@mephiztopheles/properties/properties/ArrayProperty.js";
-import BooleanProperty from "@mephiztopheles/properties/properties/BooleanProperty.js";
+import Property from "./properties/Property.js";
+import ArrayProperty from "./properties/properties/ArrayProperty.js";
+import BooleanProperty from "./properties/properties/BooleanProperty.js";
 
 
 const properties = {};
