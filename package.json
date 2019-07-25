@@ -1,0 +1,38 @@
+{
+    "name": "@mephiztopheles/jsfx",
+    "version": "0.1.0",
+    "description": "Observable-based DOM-manipulation-framework",
+    "main": "index.d.ts",
+    "directories": {
+        "test": "test"
+    },
+    "peerDependencies": {
+        "@mephiztopheles/fancypromise": "*",
+        "@mephiztopheles/properties": "*"
+    },
+    "dependencies": {
+        "@mephiztopheles/fancypromise": "*",
+        "@mephiztopheles/properties": "^1.7.0"
+    },
+    "devDependencies": {
+        "@mephiztopheles/test": "*"
+    },
+    "scripts": {
+        "test": "node test/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Mephiztopheles/jsfx.git"
+    },
+    "keywords": [
+        "jsfx",
+        "fx",
+        "mephiztopheles"
+    ],
+    "author": "xandrios93",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Mephiztopheles/jsfx/issues"
+    },
+    "homepage": "https://github.com/Mephiztopheles/jsfx#readme"
+}
