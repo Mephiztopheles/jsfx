@@ -1,6 +1,6 @@
 {
     "name": "@mephiztopheles/jsfx",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Observable-based DOM-manipulation-framework",
     "main": "index.d.ts",
     "directories": {
