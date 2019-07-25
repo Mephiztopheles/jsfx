@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const pnum = (/[+-]?(?:\d*\.|)\d+(?:[eE][+-]?\d+|)/).source;
 const rcssNum = new RegExp("^(?:([+-])=|)(" + pnum + ")([a-z%]*)$", "i");
 const rnumnonpx = new RegExp("^(" + pnum + ")(?!px)[a-z%]+$", "i");
@@ -212,7 +210,7 @@ function setPositiveNumber(elem, value, subtract) {
         return value;
     return Math.max(0, matches[2] - (subtract || 0)) + (matches[3] || "px");
 }
-class Style {
+export default class Style {
     static css(elem, name, extra, styles) {
         let val, num, hooks, origName = camelCase(name), isCustomProp = rcustomProp.test(name);
         if (!isCustomProp)
@@ -314,7 +312,6 @@ Style.cssHooks = {
         }
     }
 };
-exports.default = Style;
 ["height", "width"].forEach((dimension) => {
     Style.cssHooks[dimension] = {
         get(elem, computed, extra) {

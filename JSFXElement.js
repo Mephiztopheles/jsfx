@@ -1,36 +1,34 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const JSFXProperty_js_1 = require("./JSFXProperty.js");
-const JSFXNode_js_1 = require("./JSFXNode.js");
-const ArrayProperty_js_1 = require("@mephiztopheles/properties/properties/ArrayProperty.js");
-const StringProperty_js_1 = require("@mephiztopheles/properties/properties/StringProperty.js");
-const BooleanProperty_js_1 = require("@mephiztopheles/properties/properties/BooleanProperty.js");
-const NumberProperty_js_1 = require("@mephiztopheles/properties/properties/NumberProperty.js");
-const ObjectProperty_js_1 = require("@mephiztopheles/properties/properties/ObjectProperty.js");
-const Style_js_1 = require("./helper/Style.js");
-const Data_js_1 = require("./helper/Data.js");
+import JSFXProperty from "./JSFXProperty.js";
+import JSFXNode from "./JSFXNode.js";
+import ArrayProperty from "@mephiztopheles/properties/properties/ArrayProperty.js";
+import StringProperty from "@mephiztopheles/properties/properties/StringProperty.js";
+import BooleanProperty from "@mephiztopheles/properties/properties/BooleanProperty.js";
+import NumberProperty from "@mephiztopheles/properties/properties/NumberProperty.js";
+import ObjectProperty from "@mephiztopheles/properties/properties/ObjectProperty.js";
+import Style from "./helper/Style.js";
+import Data from "./helper/Data.js";
 const nodeMap = new WeakMap();
 const rnothtmlwhite = (/[^\x20\t\r\n\f]+/g), rtypenamespace = /^([^.]*)(?:\.(.+)|)/;
-class JSFXElement {
+export default class JSFXElement {
     constructor(element) {
-        this.children = new ArrayProperty_js_1.default();
-        this.classes = new ArrayProperty_js_1.default();
-        this.id = new StringProperty_js_1.default();
-        this.disabled = new BooleanProperty_js_1.default();
-        this.text = new StringProperty_js_1.default();
-        this.html = new StringProperty_js_1.default();
-        this.clientHeight = new NumberProperty_js_1.default();
-        this.clientWidth = new NumberProperty_js_1.default();
-        this.clientLeft = new NumberProperty_js_1.default();
-        this.scrollTop = new NumberProperty_js_1.default();
-        this.scrollLeft = new NumberProperty_js_1.default();
-        this.onClick = new ObjectProperty_js_1.default();
+        this.children = new ArrayProperty();
+        this.classes = new ArrayProperty();
+        this.id = new StringProperty();
+        this.disabled = new BooleanProperty();
+        this.text = new StringProperty();
+        this.html = new StringProperty();
+        this.clientHeight = new NumberProperty();
+        this.clientWidth = new NumberProperty();
+        this.clientLeft = new NumberProperty();
+        this.scrollTop = new NumberProperty();
+        this.scrollLeft = new NumberProperty();
+        this.onClick = new ObjectProperty();
         this.listeners = new Map();
         this.element = element;
         if (this.element == null)
@@ -41,7 +39,7 @@ class JSFXElement {
                 this.mutated(mutation);
             });
             JSFXElement.forEachPrototype(this, constructor => {
-                const properties = JSFXProperty_js_1.default.get(constructor.constructor.name);
+                const properties = JSFXProperty.get(constructor.constructor.name);
                 if (properties != null) {
                     properties.forEach(property => {
                         if (property.updateOnChange)
@@ -78,7 +76,7 @@ class JSFXElement {
                     this.element.lastChild.before(child.element);
             });
         });
-        const properties = JSFXProperty_js_1.default.get(this.constructor.name);
+        const properties = JSFXProperty.get(this.constructor.name);
         if (properties != null) {
             properties.forEach(property => {
                 if (property.updateOnChange) {
@@ -155,9 +153,9 @@ class JSFXElement {
     }
     data(name, value) {
         if (arguments.length == 1)
-            return Data_js_1.default.get(this.element, name);
+            return Data.get(this.element, name);
         else
-            Data_js_1.default.set(this.element, name, value);
+            Data.set(this.element, name, value);
     }
     hasClass(clazz) {
         return this.element.classList.contains(clazz);
@@ -166,12 +164,12 @@ class JSFXElement {
         if (Object.getPrototypeOf(name) == Object.prototype) {
             for (let key in name)
                 if (name.hasOwnProperty(key))
-                    Style_js_1.default.style(this.element, key, name[key]);
+                    Style.style(this.element, key, name[key]);
             return;
         }
         return value !== undefined ?
-            Style_js_1.default.style(this.element, name, value) :
-            Style_js_1.default.css(this.element, name);
+            Style.style(this.element, name, value) :
+            Style.css(this.element, name);
     }
     on(type, listener, options) {
         const types = (type || "").match(rnothtmlwhite) || [""];
@@ -239,7 +237,7 @@ class JSFXElement {
         let xElement = nodeMap.get(element);
         if (xElement != null)
             return xElement;
-        const clazz = JSFXNode_js_1.default.get(element.localName);
+        const clazz = JSFXNode.get(element.localName);
         const compiled = new clazz(element);
         this.provideDefaults(compiled, element);
         for (let index = 0; index < element.children.length; index++)
@@ -248,7 +246,7 @@ class JSFXElement {
     }
     static provideDefaults(container, element) {
         this.forEachPrototype(container, constructor => {
-            const properties = JSFXProperty_js_1.default.get(constructor.constructor.name);
+            const properties = JSFXProperty.get(constructor.constructor.name);
             if (properties != null) {
                 properties.forEach(property => {
                     property.intercept(container[property.propertyKey], element[property.name]);
@@ -258,36 +256,35 @@ class JSFXElement {
     }
 }
 __decorate([
-    JSFXProperty_js_1.default("classList", false, JSFXProperty_js_1.default.ARRAY)
+    JSFXProperty("classList", false, JSFXProperty.ARRAY)
 ], JSFXElement.prototype, "classes", void 0);
 __decorate([
-    JSFXProperty_js_1.default("id")
+    JSFXProperty("id")
 ], JSFXElement.prototype, "id", void 0);
 __decorate([
-    JSFXProperty_js_1.default("disabled")
+    JSFXProperty("disabled")
 ], JSFXElement.prototype, "disabled", void 0);
 __decorate([
-    JSFXProperty_js_1.default("innerText")
+    JSFXProperty("innerText")
 ], JSFXElement.prototype, "text", void 0);
 __decorate([
-    JSFXProperty_js_1.default("innerHTML")
+    JSFXProperty("innerHTML")
 ], JSFXElement.prototype, "html", void 0);
 __decorate([
-    JSFXProperty_js_1.default("clientHeight", false)
+    JSFXProperty("clientHeight", false)
 ], JSFXElement.prototype, "clientHeight", void 0);
 __decorate([
-    JSFXProperty_js_1.default("clientWidth", false)
+    JSFXProperty("clientWidth", false)
 ], JSFXElement.prototype, "clientWidth", void 0);
 __decorate([
-    JSFXProperty_js_1.default("clientLeft", false)
+    JSFXProperty("clientLeft", false)
 ], JSFXElement.prototype, "clientLeft", void 0);
 __decorate([
-    JSFXProperty_js_1.default("scrollTop", false)
+    JSFXProperty("scrollTop", false)
 ], JSFXElement.prototype, "scrollTop", void 0);
 __decorate([
-    JSFXProperty_js_1.default("scrollLeft", false)
+    JSFXProperty("scrollLeft", false)
 ], JSFXElement.prototype, "scrollLeft", void 0);
 __decorate([
-    JSFXProperty_js_1.default("onClick")
+    JSFXProperty("onClick")
 ], JSFXElement.prototype, "onClick", void 0);
-exports.default = JSFXElement;

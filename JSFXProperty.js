@@ -1,7 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const properties = {};
-function JSFXProperty(name, updateOnChange = true, intercept = JSFXProperty.DEFAULT) {
+export default function JSFXProperty(name, updateOnChange = true, intercept = JSFXProperty.DEFAULT) {
     return function (target, propertyKey) {
         let p = properties[target.constructor.name];
         if (p == null)
@@ -9,7 +7,6 @@ function JSFXProperty(name, updateOnChange = true, intercept = JSFXProperty.DEFA
         p.push({ propertyKey, name, intercept, updateOnChange });
     };
 }
-exports.default = JSFXProperty;
 JSFXProperty.get = function (name) {
     return properties[name];
 };

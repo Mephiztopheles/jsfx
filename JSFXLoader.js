@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -7,13 +6,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const JSFXElement_js_1 = require("./JSFXElement.js");
-const ajax_js_1 = require("./helper/ajax.js");
-class JSFXLoader {
+import JSFXElement from "./JSFXElement.js";
+import ajax from "./helper/ajax.js";
+export class JSFXLoader {
     static load(url) {
         return __awaiter(this, void 0, void 0, function* () {
-            const response = yield ajax_js_1.default({ url });
+            const response = yield ajax({ url });
             return this.convert(response);
         });
     }
@@ -24,7 +22,6 @@ class JSFXLoader {
     }
     static compile(element) {
         // @ts-ignore same package
-        return JSFXElement_js_1.default.compile(element);
+        return JSFXElement.compile(element);
     }
 }
-exports.JSFXLoader = JSFXLoader;

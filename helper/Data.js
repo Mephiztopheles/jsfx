@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 const cache = new WeakMap();
 const rbrace = /^(?:{[\w\W]*}|\[[\w\W]*])$/, rmultiDash = /[A-Z]/g;
 function getData(data) {
@@ -34,7 +32,7 @@ function dataAttr(elem, key) {
     }
     return data;
 }
-class Data {
+export default class Data {
     constructor(props) {
     }
     static get(element, name) {
@@ -53,4 +51,3 @@ class Data {
         cached[name] = value;
     }
 }
-exports.default = Data;
